@@ -1,44 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Clueless
+Clueless is an online party game, inspired by the popular game [Codenames](https://codenames.game/). A live version of the game can be found [here](http://clueless.peakfinn.nl/). This repository hosts the frontend part of the game, built using React and Typescript.
 
-## Available Scripts
+## Installation
+To run this repository, you will need a .env file. An empty example of this file has been provided in [.env.example](.env.example). The values that go into this file are secret, and the actual .env file should never be pushed to any repository ever. For obvious reasons, the values connecting this project to Clueless' database will stay secret. However, you can create a Firebase project yourself and get the required values for the .env file yourself, and then use those instead. You can find out how to setup a Firebase project [here]()
 
-In the project directory, you can run:
+Once you've got your .env file setup, simply run these commands to start the project:
+```
+npm install
+npm start
+```
+And you're done!
 
-### `yarn start`
+## Contributing
+If you want to contribute, thanks! Pull Requests are always welcome. When you wish to make any big changes, please open an issue first to discuss your plans, to prevent any wastes of time!
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
+[GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/)
