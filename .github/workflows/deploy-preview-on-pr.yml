@@ -1,0 +1,20 @@
+name: Deploy on Merge to Master
+'on':
+  push:
+    branches:
+      - master
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci && npm run build
+      # - uses: FirebaseExtended/action-hosting-deploy@v0
+      #   with:
+      #     repoToken: '${{ secrets.GITHUB_TOKEN }}'
+      #     firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLUELESS_GAME_6C5B6 }}'
+      #     channelId: live
+      #     projectId: clueless-game-6c5b6
+      #   env:
+      #     FIREBASE_CLI_PREVIEWS: hostingchannels
+      # TODO: Make it so a preview website is hosted on every PR, though it shouldn't connect to the live database
