@@ -6,7 +6,8 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"deploy": "npm run build && firebase deploy --only hosting"
+		"lint": "tsc --noEmit && eslint */**/*.{ts,tsx} --fix",
+		"deploy": "npm run lint && npm run build && firebase deploy --only hosting"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -22,7 +23,12 @@
 			"browser": true,
 			"jest": true
 		},
+		"ignorePatterns": [
+			"serviceWorker.ts"
+		],
 		"rules": {
+			"no-param-reassign": "off",
+			"@import/no-unresolved": "off",
 			"@typescript-eslint/camelcase": "off",
 			"@typescript-eslint/no-non-null-assertion": "off",
 			"@typescript-eslint/no-explicit-any": "off",
@@ -116,6 +122,9 @@
 		]
 	},
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.27",
+		"@fortawesome/free-solid-svg-icons": "^5.12.1",
+		"@fortawesome/react-fontawesome": "^0.1.8",
 		"@rebass/forms": "^4.0.6",
 		"@rebass/preset": "^4.0.5",
 		"@testing-library/jest-dom": "^4.2.4",
@@ -126,9 +135,12 @@
 		"emotion-theming": "^10.0.27",
 		"firebase": "^7.7.0",
 		"formik": "^2.1.2",
+		"lodash": "^4.17.15",
 		"react": "^16.12.0",
 		"react-confetti": "^5.0.1",
 		"react-dom": "^16.12.0",
+		"react-flagkit": "^2.0.4",
+		"react-motion-drawer": "^3.1.0",
 		"react-promise-tracker": "^2.0.5",
 		"react-router-dom": "^5.1.2",
 		"react-scripts": "3.3.0",
@@ -136,7 +148,7 @@
 		"react-toastify": "^5.5.0",
 		"react-use": "^13.22.0",
 		"rebass": "^4.0.7",
-		"rodal": "^1.7.0",
+		"rodal": "github:finnbueno/rodal",
 		"styled-components": "^5.0.0",
 		"typescript": "~3.7.2",
 		"use-react-router": "^1.0.7",
@@ -145,6 +157,7 @@
 	"devDependencies": {
 		"@peakfijn/config-eslint": "^2.1.0",
 		"@types/jest": "^24.9.0",
+		"@types/lodash": "^4.14.149",
 		"@types/node": "^12.12.25",
 		"@types/react": "^16.9.18",
 		"@types/react-dom": "^16.9.5",

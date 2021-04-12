@@ -1,55 +1,77 @@
 import React from 'react';
-import { Text, Box } from 'rebass';
-import { Input } from '@rebass/forms';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import { ProgressButton } from 'src/atoms/progress-button';
+import { Flex } from 'rebass';
+import { AdvancedInput } from 'src/atoms/form';
 
-export const CreateForm: React.FC<CreateFormProps> = (props) => (
-    <Formik
-        initialValues={{
-            password: '',
-        }}
-        validationSchema={yup.object().shape({
-            password: yup.string()
-                .min(6, 'A bit longer wouldn\'t hurt.')
-                .required('What\'s a game with no password?')
-        })}
-        onSubmit={({ password }) => props.onSubmit(password)}
-    >
-        {({ errors, touched, isSubmitting, submitForm, submitCount }) => (
-            <>
-                <Field
-                    name='password'
-                    id='password'
-                    // @ts-ignore
-                    render={({ field }) => (
-                        <Input
-                            mt={3}
-                            placeholder='Password'
-                            type='password'
-                            {...field}
-                        />
-                    )}
-                />
-                {errors.password && (touched.password || submitCount > 0) ? (
-                    <Text mt={1} mb={1} variant='error'>{errors.password}</Text>
-                ) : (
-                    <Box mt='26px' />
-                )}
-                <ProgressButton
-                    scope='fetch-game'
-                    variant='primary'
-                    disabled={isSubmitting}
-                    onClick={submitForm}
-                >
+export const CreateForm: React.FC<CreateFormProps> = props => (
+	<Formik
+		initialValues={{
+			password: '',
+			teamAmount: 2,
+			gridSize: 5,
+		}}
+		validationSchema={yup.object().shape({
+			password: yup.string()
+				.min(6, 'A bit longer wouldn\'t hurt')
+				.required('Password is required'),
+			teamAmount: yup.number()
+				.min(2, 'The min is 2')
+				.max(4, 'The max is 4'),
+			gridSize: yup.number()
+				.min(4, 'The min is 4')
+				.max(7, 'The max is 7')
+		})}
+		onSubmit={({ password, teamAmount, gridSize }) => props.onSubmit(password, teamAmount || 2, gridSize || 5)}
+	>
+		{({ errors, touched, isSubmitting, submitForm, submitCount }) => (
+			<>
+				<AdvancedInput
+					errors={errors}
+					touched={touched}
+					submitCount={submitCount}
+					name='password'
+					type='password'
+					caption='Password'
+				/>
+				<Flex justifyContent='space-between' width='100%'>
+					<AdvancedInput
+						variant='number'
+						errors={errors}
+						touched={touched}
+						submitCount={submitCount}
+						name='teamAmount'
+						type='number'
+						caption='Teams'
+						min={2}
+						max={9}
+					/>
+					<AdvancedInput
+						variant='number'
+						errors={errors}
+						touched={touched}
+						submitCount={submitCount}
+						name='gridSize'
+						type='number'
+						caption='Grid size'
+						min={4}
+						max={7}
+					/>
+				</Flex>
+				<ProgressButton
+					scope='fetch-game'
+					variant='primary'
+					disabled={isSubmitting}
+					onClick={submitForm}
+				>
                     Create
-                </ProgressButton>
-            </>
-        )}
-    </Formik>
+				</ProgressButton>
+			</>
+		)}
+	</Formik>
 );
 
 interface CreateFormProps {
-    onSubmit: (password: string) => void;
+	onSubmit: (password: string, teamSize: number, gridSize: number) => void;
 }
