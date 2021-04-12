@@ -8,7 +8,7 @@ jobs:
       - uses: actions/setup-node@v2
         with: 
           node-version: '12'
-      - run: npm ci && npm run build
+      - run: npm ci && npm run react-build
       # - uses: FirebaseExtended/action-hosting-deploy@v0
       #   with:
       #     repoToken: '${{ secrets.GITHUB_TOKEN }}'
