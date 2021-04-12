@@ -14,7 +14,7 @@ jobs:
         with: 
           node-version: '12'
       - name: Clean Install and Build
-        run: npm ci && npm run build
+        run: npm ci && npm run react-build
         working-directory: ./src
       - name: Run Deployment
         uses: FirebaseExtended/action-hosting-deploy@v0
