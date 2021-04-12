@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import dotenv from 'dotenv';
 
 import * as firebase from 'firebase/app';
-import * as serviceWorker from 'src/serviceWorker';
-import App from 'src/app';
+import * as serviceWorker from './serviceWorker';
+import App from './app';
 
 import 'firebase/auth';
 
